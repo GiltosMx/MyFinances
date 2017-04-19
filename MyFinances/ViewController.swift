@@ -20,9 +20,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func dismissAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 
 }
 
