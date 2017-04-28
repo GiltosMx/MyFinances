@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             return
         }
         else{
-            print("si se abriò")
+            print("si se abrio")
             return
         }
         
