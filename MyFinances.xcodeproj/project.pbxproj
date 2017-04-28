@@ -13,9 +13,12 @@
 		3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976651E72115400BDFE34 /* MyFinances.xcdatamodeld */; };
 		3A5976691E72115400BDFE34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976681E72115400BDFE34 /* Assets.xcassets */; };
 		3A59766C1E72115400BDFE34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A59766A1E72115400BDFE34 /* LaunchScreen.storyboard */; };
+		F491079679F7BA0E12504F96 /* Pods_MyFinances.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFinances.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.release.xcconfig"; sourceTree = "<group>"; };
 		3A59765B1E72115400BDFE34 /* MyFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A59765E1E72115400BDFE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A5976601E72115400BDFE34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		3A5976681E72115400BDFE34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A59766B1E72115400BDFE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A59766D1E72115400BDFE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		741A997EF3F092022220D67E /* Pods-MyFinances.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F491079679F7BA0E12504F96 /* Pods_MyFinances.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				3A59765D1E72115400BDFE34 /* MyFinances */,
 				3A59765C1E72115400BDFE34 /* Products */,
+				6DE433175698C9B952C3E569 /* Pods */,
+				4293BF7ABBF92946688087A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = MyFinances;
 			sourceTree = "<group>";
 		};
+		4293BF7ABBF92946688087A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DE433175698C9B952C3E569 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				741A997EF3F092022220D67E /* Pods-MyFinances.debug.xcconfig */,
+				366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A5976701E72115400BDFE34 /* Build configuration list for PBXNativeTarget "MyFinances" */;
 			buildPhases = (
+				D2492B0B0677632C085F5D49 /* [CP] Check Pods Manifest.lock */,
 				3A5976571E72115300BDFE34 /* Sources */,
 				3A5976581E72115300BDFE34 /* Frameworks */,
 				3A5976591E72115300BDFE34 /* Resources */,
+				20516A383AAC1B0C03FC7D30 /* [CP] Embed Pods Frameworks */,
+				EFF7B1B6E65CD570FB41455C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,6 +161,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20516A383AAC1B0C03FC7D30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2492B0B0677632C085F5D49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EFF7B1B6E65CD570FB41455C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A5976571E72115300BDFE34 /* Sources */ = {
@@ -263,6 +338,7 @@
 		};
 		3A5976711E72115400BDFE34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 741A997EF3F092022220D67E /* Pods-MyFinances.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZUU2YC88M2;
@@ -276,6 +352,7 @@
 		};
 		3A5976721E72115400BDFE34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZUU2YC88M2;

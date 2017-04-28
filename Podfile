@@ -6,5 +6,5 @@ target 'MyFinances' do
   use_frameworks!
 
   # Pods for MyFinances
-
+	pod 'FMDB'
 end

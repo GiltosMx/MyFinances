@@ -7,22 +7,31 @@
 //
 
 import UIKit
+import FMDB
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        
+        let dbPath = paths[0] + "/myDB.db"
+        
+        let BD = FMDatabase(path: dbPath)
+        
+        if !BD!.open()
+        {
+            print("Error al abrir la BD")
+            return
+        }
+        else{
+            print("si se abriò")
+            return
+        }
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func dismissAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+   
 
 }
 
