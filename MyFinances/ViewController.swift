@@ -14,26 +14,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createOrOpenDB()
+        
     }
     
-    func createOrOpenDB(){
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        
-        let dbPath = paths[0] + "/myDB.db"
-        
-        let BD = FMDatabase(path: dbPath)
-        
-        if !BD!.open()
-        {
-            print("Error al abrir la BD")
-            return
-        }
-        else{
-            print("si se abrio")
-            return
-        }
-    }
+    
     
 
    

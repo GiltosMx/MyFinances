@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/adrian/Documents/Dispositivos Moviles/MyFinances/build/Debug-iphoneos/FoldingCell/FoldingCell.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/adrian/Documents/Dispositivos Moviles/MyFinances/build/Pods.build/Debug-iphoneos/FoldingCell.build/unextended-module.modulemap',
+    }]
+  }]
+}
