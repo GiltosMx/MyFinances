@@ -7,4 +7,5 @@ target 'MyFinances' do
 
   # Pods for MyFinances
 	pod 'FMDB'
+    pod 'FoldingCell', '~> 2.0.3'
 end

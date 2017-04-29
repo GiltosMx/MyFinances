@@ -13,6 +13,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createOrOpenDB()
+    }
+    
+    func createOrOpenDB(){
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         
         let dbPath = paths[0] + "/myDB.db"
@@ -28,8 +33,8 @@ class ViewController: UIViewController {
             print("si se abrio")
             return
         }
-        
     }
+    
 
    
 

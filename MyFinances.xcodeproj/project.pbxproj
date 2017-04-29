@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A09A7951EB4FCA1001FB43B /* UIViewForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */; };
+		3A56DA1A1EB38009005AA294 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56DA191EB38009005AA294 /* CollectionViewCell.swift */; };
 		3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59765E1E72115400BDFE34 /* AppDelegate.swift */; };
 		3A5976611E72115400BDFE34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976601E72115400BDFE34 /* ViewController.swift */; };
 		3A5976641E72115400BDFE34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976621E72115400BDFE34 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFinances.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.release.xcconfig"; sourceTree = "<group>"; };
+		3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewForCell.swift; sourceTree = "<group>"; };
+		3A56DA191EB38009005AA294 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3A59765B1E72115400BDFE34 /* MyFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A59765E1E72115400BDFE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A5976601E72115400BDFE34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				3A59766A1E72115400BDFE34 /* LaunchScreen.storyboard */,
 				3A59766D1E72115400BDFE34 /* Info.plist */,
 				3A5976651E72115400BDFE34 /* MyFinances.xcdatamodeld */,
+				3A56DA191EB38009005AA294 /* CollectionViewCell.swift */,
+				3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */,
 			);
 			path = MyFinances;
 			sourceTree = "<group>";
@@ -215,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A09A7951EB4FCA1001FB43B /* UIViewForCell.swift in Sources */,
 				3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */,
 				3A5976611E72115400BDFE34 /* ViewController.swift in Sources */,
+				3A56DA1A1EB38009005AA294 /* CollectionViewCell.swift in Sources */,
 				3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +391,7 @@
 				3A5976721E72115400BDFE34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
