@@ -9,16 +9,17 @@
 import UIKit
 import FMDB
 
-class AddCategoriaViewController: UIViewController {
+class AddCategoriaViewController: UIViewController, UITextFieldDelegate{
     
     var BD: FMDatabase!
 
     @IBOutlet weak var categoriaTextFiel: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        categoriaTextFiel.delegate = self
         // Do any additional setup after loading the view.
         createOrOpenDB()
     }
@@ -69,5 +70,16 @@ class AddCategoriaViewController: UIViewController {
 
     @IBAction func regresar(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        textField.resignFirstResponder()
+        
+        return true
     }
 }

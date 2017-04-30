@@ -14,6 +14,7 @@
 		3A09A79F1EB5E3BA001FB43B /* finance.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A79E1EB5E3BA001FB43B /* finance.png */; };
 		3A09A7A11EB5E4DB001FB43B /* finances2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A7A01EB5E4DB001FB43B /* finances2.png */; };
 		3A09A7A31EB5E612001FB43B /* business.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A7A21EB5E612001FB43B /* business.png */; };
+		3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */; };
 		3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59765E1E72115400BDFE34 /* AppDelegate.swift */; };
 		3A5976611E72115400BDFE34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976601E72115400BDFE34 /* ViewController.swift */; };
 		3A5976641E72115400BDFE34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976621E72115400BDFE34 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		3A09A79E1EB5E3BA001FB43B /* finance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finance.png; sourceTree = "<group>"; };
 		3A09A7A01EB5E4DB001FB43B /* finances2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finances2.png; sourceTree = "<group>"; };
 		3A09A7A21EB5E612001FB43B /* business.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business.png; sourceTree = "<group>"; };
+		3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3A59765B1E72115400BDFE34 /* MyFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A59765E1E72115400BDFE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A5976601E72115400BDFE34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				3A59765E1E72115400BDFE34 /* AppDelegate.swift */,
 				3A5976601E72115400BDFE34 /* ViewController.swift */,
 				3A5976621E72115400BDFE34 /* Main.storyboard */,
+				3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */,
 				3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */,
 				3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */,
 				3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */,
@@ -242,6 +245,7 @@
 			files = (
 				3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */,
 				3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */,
+				3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */,
 				3A5976611E72115400BDFE34 /* ViewController.swift in Sources */,
 				3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */,
 				3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */,

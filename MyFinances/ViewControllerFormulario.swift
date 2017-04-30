@@ -10,8 +10,9 @@ import UIKit
 import FMDB
 import Charts
 
-class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, ChartViewDelegate{
+class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ChartViewDelegate{
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var DescripcionTextField: UITextField!
     @IBOutlet weak var montoTextField: UITextField!
     @IBOutlet weak var categoriasPicker: UIPickerView!
@@ -30,12 +31,20 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         super.viewDidLoad()
         self.categoriasPicker.dataSource = self
         self.categoriasPicker.delegate = self
+        DescripcionTextField.delegate = self
+        montoTextField.delegate = self
+        
         createOrOpenDB()
         getCategorias()
         getPresupuesto()
         
         graficaPastel.delegate = self
         //createTables()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getCategorias()
+        getPresupuesto()
+        print("willApear")
     }
     
     func createTables(){
@@ -91,13 +100,19 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func getCategorias(){
-        let query = try! BD.executeQuery("SELECT Categoria FROM Catalogo_categoria", values: [])
-        
-        while query.next()
-        {
-            categoriasArray.append(query.string(forColumn: "Categoria"))
+        categoriasArray.removeAll()
+        do{
+            let query = try BD.executeQuery("SELECT Categoria FROM Catalogo_categoria", values: [])
+            while query.next()
+            {
+                categoriasArray.append(query.string(forColumn: "Categoria"))
+                
+            }
+        }catch{
+            createTables()
+            getCategorias()
         }
-        
+        categoriasPicker.reloadAllComponents()
         
     }
     
@@ -169,6 +184,9 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 self.graficaPastel.data?.notifyDataChanged()
                 self.graficaPastel.notifyDataSetChanged()
                 
+                self.graficaPastel.setNeedsFocusUpdate()
+                self.graficaPastel.reloadInputViews()
+                self.graficaPastel.clear()
                 self.getPresupuesto()
                 
                 let confirm = UIAlertController(title: "Listo", message: "Venta Registrada", preferredStyle: .alert)
@@ -194,6 +212,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         self.present(alert, animated: true, completion: nil)
         
+        
     }
     
     
@@ -213,6 +232,17 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         return 1
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        textField.resignFirstResponder()
+        
+        return true
     }
 
 }

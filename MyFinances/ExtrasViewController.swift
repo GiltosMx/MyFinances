@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ExtrasViewController: UIViewController {
+class ExtrasViewController: UIViewController,UITextFieldDelegate {
     var Dolar: Float = 0.0
     var Pesosbtc: Float = 0.0
     var Dolarbtc: Float = 0.0
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usdOutputxt: UITextField!
     @IBOutlet weak var mxmOutputxt: UITextField!
     @IBOutlet weak var mxmTextField: UITextField!
@@ -24,6 +25,11 @@ class ExtrasViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usdOutputxt.delegate = self
+        mxmOutputxt.delegate = self
+        mxmTextField.delegate = self
+        usdTextFiel.delegate = self
+        
         
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -89,6 +95,22 @@ class ExtrasViewController: UIViewController {
             print("Datos aun no listos")
         }
     }
-   
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
+        
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 100),
+                                         animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
 
 }
