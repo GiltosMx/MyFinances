@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,10 +24,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>124FD772358DE8859C3AE7BC6C458FE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>251BAD17812F7EBF6532EACF66F941C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>558642E6A7B62258E6415F3CE041FA18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A80C1D3763E53999063F9C9EF5881299</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBDEA9745AB7FFF96BFC679476EADC99</key>
+		<key>F307B842FF76B2DE6C55DB67C0885325</key>
 		<dict>
 			<key>primary</key>
 			<true/>

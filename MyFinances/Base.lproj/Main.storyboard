@@ -73,8 +73,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-K9-Suz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuevo Gasto :'(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nf-Uf-82j">
-                                        <rect key="frame" x="96" y="18" width="184" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Formulario de gastos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nf-Uf-82j">
+                                        <rect key="frame" x="62.5" y="18" width="251.5" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                                 <color key="backgroundColor" red="0.63921568627450975" green="0.88235294117647056" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83i-iI-iRK">
@@ -110,7 +110,7 @@
                                     <constraint firstAttribute="width" constant="149" id="lGV-PW-tKG" userLabel="width = 100"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRs-fL-Caj">
@@ -194,6 +194,8 @@
                         <outlet property="DescripcionTextField" destination="gIi-Gf-1qx" id="Ls9-Bt-zDu"/>
                         <outlet property="categoriasPicker" destination="zte-q5-auV" id="Y3l-X2-hmc"/>
                         <outlet property="montoTextField" destination="kNb-NS-g0L" id="5de-OC-AuV"/>
+                        <outlet property="presupuestoLabel" destination="SYM-pi-Eiy" id="Ybn-Ve-zdo"/>
+                        <outlet property="saldoRestanteLabel" destination="Zd2-Zb-meF" id="aR5-Lf-6YR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWr-Jp-75l" userLabel="First Responder" sceneMemberID="firstResponder"/>
