@@ -14,22 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FoldingCell.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-MyFinances.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,27 +22,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>124FD772358DE8859C3AE7BC6C458FE0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>251BAD17812F7EBF6532EACF66F941C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>558642E6A7B62258E6415F3CE041FA18</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A80C1D3763E53999063F9C9EF5881299</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B626E472969D6F87698AF0041EAAFC38</key>
+		<key>DF8B7BDF572A804588FB4789D6C1216F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

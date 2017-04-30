@@ -5,26 +5,15 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - FoldingCell (2.0.5)
-  - Realm (2.0.4):
-    - Realm/Headers (= 2.0.4)
-  - Realm/Headers (2.0.4)
-  - RealmSwift (2.0.4):
-    - Realm (= 2.0.4)
 
 DEPENDENCIES:
   - Charts (~> 3.0.1)
   - FMDB
-  - FoldingCell (~> 2.0.3)
-  - RealmSwift (~> 2.0.2)
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  FoldingCell: fb189fc746e95b722a1debf8ef455006b70cae2e
-  Realm: 9da97f48365f8b99dd95c28d45ad8222d62e1775
-  RealmSwift: 01e8db006035f16003e6307ae8eae1adccce68db
 
-PODFILE CHECKSUM: 57057a3d0e1133cd3fe8356befebc6c0acc66b70
+PODFILE CHECKSUM: 169a9c736fea9c3da8c6a5a95692b69865202cf7
 
 COCOAPODS: 1.2.0

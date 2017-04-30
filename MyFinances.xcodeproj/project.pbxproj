@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A09A7951EB4FCA1001FB43B /* UIViewForCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */; };
 		3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */; };
-		3A56DA1A1EB38009005AA294 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56DA191EB38009005AA294 /* CollectionViewCell.swift */; };
+		3A09A7991EB5B669001FB43B /* backGroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A7981EB5B669001FB43B /* backGroundBlue.png */; };
+		3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */; };
+		3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */; };
+		3A09A79F1EB5E3BA001FB43B /* finance.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A79E1EB5E3BA001FB43B /* finance.png */; };
+		3A09A7A11EB5E4DB001FB43B /* finances2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A7A01EB5E4DB001FB43B /* finances2.png */; };
+		3A09A7A31EB5E612001FB43B /* business.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A09A7A21EB5E612001FB43B /* business.png */; };
 		3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59765E1E72115400BDFE34 /* AppDelegate.swift */; };
 		3A5976611E72115400BDFE34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976601E72115400BDFE34 /* ViewController.swift */; };
 		3A5976641E72115400BDFE34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976621E72115400BDFE34 /* Main.storyboard */; };
@@ -22,9 +26,13 @@
 /* Begin PBXFileReference section */
 		00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFinances.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.release.xcconfig"; sourceTree = "<group>"; };
-		3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewForCell.swift; sourceTree = "<group>"; };
 		3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFormulario.swift; sourceTree = "<group>"; };
-		3A56DA191EB38009005AA294 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		3A09A7981EB5B669001FB43B /* backGroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundBlue.png; sourceTree = "<group>"; };
+		3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoriaViewController.swift; sourceTree = "<group>"; };
+		3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
+		3A09A79E1EB5E3BA001FB43B /* finance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finance.png; sourceTree = "<group>"; };
+		3A09A7A01EB5E4DB001FB43B /* finances2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finances2.png; sourceTree = "<group>"; };
+		3A09A7A21EB5E612001FB43B /* business.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business.png; sourceTree = "<group>"; };
 		3A59765B1E72115400BDFE34 /* MyFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A59765E1E72115400BDFE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A5976601E72115400BDFE34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,16 +77,20 @@
 		3A59765D1E72115400BDFE34 /* MyFinances */ = {
 			isa = PBXGroup;
 			children = (
+				3A09A7A21EB5E612001FB43B /* business.png */,
+				3A09A7A01EB5E4DB001FB43B /* finances2.png */,
+				3A09A79E1EB5E3BA001FB43B /* finance.png */,
 				3A59765E1E72115400BDFE34 /* AppDelegate.swift */,
 				3A5976601E72115400BDFE34 /* ViewController.swift */,
 				3A5976621E72115400BDFE34 /* Main.storyboard */,
+				3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */,
+				3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */,
 				3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */,
 				3A5976681E72115400BDFE34 /* Assets.xcassets */,
 				3A59766A1E72115400BDFE34 /* LaunchScreen.storyboard */,
 				3A59766D1E72115400BDFE34 /* Info.plist */,
+				3A09A7981EB5B669001FB43B /* backGroundBlue.png */,
 				3A5976651E72115400BDFE34 /* MyFinances.xcdatamodeld */,
-				3A56DA191EB38009005AA294 /* CollectionViewCell.swift */,
-				3A09A7941EB4FCA1001FB43B /* UIViewForCell.swift */,
 			);
 			path = MyFinances;
 			sourceTree = "<group>";
@@ -164,8 +176,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A59766C1E72115400BDFE34 /* LaunchScreen.storyboard in Resources */,
+				3A09A7991EB5B669001FB43B /* backGroundBlue.png in Resources */,
+				3A09A79F1EB5E3BA001FB43B /* finance.png in Resources */,
 				3A5976691E72115400BDFE34 /* Assets.xcassets in Resources */,
 				3A5976641E72115400BDFE34 /* Main.storyboard in Resources */,
+				3A09A7A31EB5E612001FB43B /* business.png in Resources */,
+				3A09A7A11EB5E4DB001FB43B /* finances2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,11 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A09A7951EB4FCA1001FB43B /* UIViewForCell.swift in Sources */,
 				3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */,
+				3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */,
 				3A5976611E72115400BDFE34 /* ViewController.swift in Sources */,
-				3A56DA1A1EB38009005AA294 /* CollectionViewCell.swift in Sources */,
 				3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */,
+				3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */,
 				3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

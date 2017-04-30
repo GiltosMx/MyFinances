@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FoldingCell
+
 
 class UIViewForCell: RotatedView {
 

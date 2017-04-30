@@ -7,7 +7,5 @@ target 'MyFinances' do
 
   # Pods for MyFinances
 	pod 'FMDB'
-    pod 'FoldingCell', '~> 2.0.3'
    pod 'Charts', '~> 3.0.1'
-   pod 'RealmSwift', '~> 2.0.2'
 end

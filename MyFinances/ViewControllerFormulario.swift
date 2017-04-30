@@ -8,17 +8,20 @@
 
 import UIKit
 import FMDB
+import Charts
 
-class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, ChartViewDelegate{
     
     @IBOutlet weak var DescripcionTextField: UITextField!
     @IBOutlet weak var montoTextField: UITextField!
     @IBOutlet weak var categoriasPicker: UIPickerView!
     @IBOutlet weak var presupuestoLabel: UILabel!
     @IBOutlet weak var saldoRestanteLabel: UILabel!
+    @IBOutlet weak var graficaPastel: PieChartView!
     
     var BD: FMDatabase!
     var categoriasArray: Array<String> = []
+    var dataChart: Array<Float> = []
     var monto: Float!
     var montoString: String!
     var categoria: String!
@@ -30,26 +33,17 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         createOrOpenDB()
         getCategorias()
         getPresupuesto()
+        
+        graficaPastel.delegate = self
         //createTables()
-        //insertCategorias()
-    }
-    
-    func insertDefaultValues(){
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Transporte"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Entretenimiento"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Educacion"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
-        
-        
     }
     
     func createTables(){
-        /*let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
+        let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
         if !result
         {
             print("No se creo la tabla1")
-        }*/
+        }
         
         let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, Warning integer)")
         if !result2
@@ -68,6 +62,12 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         try! BD!.executeUpdate("insert into Usuario values(?,?,?,?,?,?,?)", values: ["Fulanito","De tal","correoFalso@hotmail.com", 14400.00, 14400.00,"Mensual", 75])
+        
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Transporte"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Entretenimiento"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Educacion"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
 
         
     }
@@ -106,8 +106,33 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         while queryPresupuesto.next()
         {
            presupuestoLabel.text = "$ " + queryPresupuesto.string(forColumn: "Presupuesto")
+            dataChart.append(Float(queryPresupuesto.string(forColumn: "Gasto"))!)
            saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
+            dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))! - Float(queryPresupuesto.string(forColumn: "Gasto"))!)
         }
+        
+        var charEntry: [PieChartDataEntry] = []
+        
+        charEntry.append(PieChartDataEntry(value: Double(dataChart[0]), label: "Disponible"))
+        charEntry.append(PieChartDataEntry(value: Double(dataChart[1]), label: "Gastado"))
+        
+        
+        
+        let pieChartdataSet = PieChartDataSet(values: charEntry, label: nil)
+        var color: [NSUIColor] = []
+        color.append(UIColor(colorLiteralRed: 0.40, green: 0.80, blue: 0.66, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.81, green: 0.94, blue: 0.89, alpha: 1.0))
+        pieChartdataSet.setColors(color, alpha: 1)
+        
+        
+        
+        let pieChartData = PieChartData(dataSet: pieChartdataSet)
+        
+        graficaPastel.drawEntryLabelsEnabled = false
+        graficaPastel.sizeToFit()
+        graficaPastel.data = pieChartData
+        
+        
     }
     
     @IBAction func insertarGastoEnBD(_ sender: Any) {
@@ -141,10 +166,17 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 
                 try! self.BD!.executeUpdate("update Usuario set Gasto = Gasto - ?", values: [self.monto])
                 
+                self.graficaPastel.data?.notifyDataChanged()
+                self.graficaPastel.notifyDataSetChanged()
+                
                 self.getPresupuesto()
                 
                 let confirm = UIAlertController(title: "Listo", message: "Venta Registrada", preferredStyle: .alert)
-                let listoButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                let listoButton = UIAlertAction(title: "Ok", style: .default){
+                    (action: UIAlertAction) in
+                    self.graficaPastel.notifyDataSetChanged()
+                    
+                }
                 confirm.addAction(listoButton)
                 self.present(confirm, animated: true, completion: nil)
             }
