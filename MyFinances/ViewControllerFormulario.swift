@@ -44,8 +44,9 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     override func viewWillAppear(_ animated: Bool) {
         getCategorias()
         getPresupuesto()
-        print("willApear")
     }
+    
+    
     
     func createTables(){
         let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
@@ -93,7 +94,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
             return
         }
         else{
-            print("si se abrio")
+            print("si se abrio BD en formulario")
             return
         }
         
@@ -125,6 +126,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
            saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
             dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))! - Float(queryPresupuesto.string(forColumn: "Gasto"))!)
         }
+        
         
         var charEntry: [PieChartDataEntry] = []
         

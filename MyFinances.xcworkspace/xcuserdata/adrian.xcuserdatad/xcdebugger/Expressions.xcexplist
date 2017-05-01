@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewControllerReporte.setInformationLabels() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lblDescripcionGasto.text">
+            </PersistentString>
+            <PersistentString
+               value = "gastoMayorQuery.string(forColumn: &quot;Descripcion&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerFormulario.getPresupuesto() -&gt; ():ViewControllerFormulario.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerReporte.fillChartColorArray() -&gt; [UIColor]:ViewControllerReporte.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
