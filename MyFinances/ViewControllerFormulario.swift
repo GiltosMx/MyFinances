@@ -26,27 +26,32 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     var monto: Float!
     var montoString: String!
     var categoria: String!
+    var charEntry: [PieChartDataEntry] = []
+    var pieChartdataSet: PieChartDataSet!
+    var pieChartData: PieChartData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.categoriasPicker.dataSource = self
         self.categoriasPicker.delegate = self
-        DescripcionTextField.delegate = self
-        montoTextField.delegate = self
+//        DescripcionTextField.delegate = self
+//        montoTextField.delegate = self
         
+        graficaPastel.delegate = self
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
         createOrOpenDB()
         getCategorias()
         getPresupuesto()
-        
-        graficaPastel.delegate = self
+        //reloadPresupuesto()
         //createTables()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        getCategorias()
-        getPresupuesto()
+    
+    func reloadPresupuesto(){
+        try! self.BD!.executeUpdate("update Usuario set Gasto = ?", values: [5000])
     }
-    
-    
     
     func createTables(){
         let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
@@ -91,13 +96,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     
         if !BD.open(){
             print("Error al abrir la BD")
-            return
         }
-        else{
-            print("si se abrio BD en formulario")
-            return
-        }
-        
     }
     
     func getCategorias(){
@@ -118,43 +117,39 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func getPresupuesto(){
+        charEntry.removeAll()
+        dataChart.removeAll()
+        
         let queryPresupuesto = try! BD.executeQuery("SELECT Presupuesto, Gasto FROM Usuario", values: [])
-        while queryPresupuesto.next()
-        {
-           presupuestoLabel.text = "$ " + queryPresupuesto.string(forColumn: "Presupuesto")
+        while queryPresupuesto.next(){
+            presupuestoLabel.text = "$ " + queryPresupuesto.string(forColumn: "Presupuesto")
             dataChart.append(Float(queryPresupuesto.string(forColumn: "Gasto"))!)
-           saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
+            saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
             dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))! - Float(queryPresupuesto.string(forColumn: "Gasto"))!)
         }
-        
-        
-        var charEntry: [PieChartDataEntry] = []
-        
+
         charEntry.append(PieChartDataEntry(value: Double(dataChart[0]), label: "Disponible"))
         charEntry.append(PieChartDataEntry(value: Double(dataChart[1]), label: "Gastado"))
         
         
-        
-        let pieChartdataSet = PieChartDataSet(values: charEntry, label: nil)
+        pieChartdataSet = PieChartDataSet(values: charEntry, label: nil)
         var color: [NSUIColor] = []
-        color.append(UIColor(colorLiteralRed: 0.40, green: 0.80, blue: 0.66, alpha: 1.0))
-        color.append(UIColor(colorLiteralRed: 0.81, green: 0.94, blue: 0.89, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.0, green: 0.66, blue: 0.45, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.25, green: 0.80, blue: 0.53, alpha: 1.0))
         pieChartdataSet.setColors(color, alpha: 1)
         
         
         
-        let pieChartData = PieChartData(dataSet: pieChartdataSet)
+        pieChartData = PieChartData(dataSet: pieChartdataSet)
         
-        graficaPastel.drawEntryLabelsEnabled = false
         graficaPastel.sizeToFit()
         graficaPastel.data = pieChartData
-        
-        
+        graficaPastel.holeColor = UIColor.clear
     }
     
     @IBAction func insertarGastoEnBD(_ sender: Any) {
        
-        let alert = UIAlertController(title: "Insertar Venta", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Insertar Gasto", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -179,29 +174,34 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 
                 print("Fecha \(fecha)")
                 
-                try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoria,fecha,self.DescripcionTextField.text!,self.monto])
+                if(self.categoria != nil){
+                    
+                    try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoria,fecha,self.DescripcionTextField.text!,self.monto])
+        
+                } else {
+                    //En caso de que el usuario no mueva el picker se
+                    //toma la primera categoria del arreglo
+                    
+                    try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoriasArray[0],fecha,self.DescripcionTextField.text!,self.monto])
+                }
                 
                 try! self.BD!.executeUpdate("update Usuario set Gasto = Gasto - ?", values: [self.monto])
                 
-                self.graficaPastel.data?.notifyDataChanged()
-                self.graficaPastel.notifyDataSetChanged()
+                //self.graficaPastel.notifyDataSetChanged()
+                //self.graficaPastel.clear()
                 
-                self.graficaPastel.setNeedsFocusUpdate()
-                self.graficaPastel.reloadInputViews()
-                self.graficaPastel.clear()
                 self.getPresupuesto()
+                
                 
                 let confirm = UIAlertController(title: "Listo", message: "Venta Registrada", preferredStyle: .alert)
                 let listoButton = UIAlertAction(title: "Ok", style: .default){
                     (action: UIAlertAction) in
-                    self.graficaPastel.notifyDataSetChanged()
+                    
                     
                 }
                 confirm.addAction(listoButton)
                 self.present(confirm, animated: true, completion: nil)
             }
-            
-            
         }
         let cancelButton = UIAlertAction(title: "Cancelar",
                                          style: .destructive)
