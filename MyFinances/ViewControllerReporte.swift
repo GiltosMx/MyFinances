@@ -26,6 +26,7 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
     var remainingBudget : Float = 0
     var arrayGastosTotales: Array<Float> = []
     var arrayCategorias: Array<String> = []
+    var arrayCategoriasGastos: Array<String> = []
 
     override func viewWillAppear(_ animated: Bool) {
 
@@ -69,15 +70,15 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         
         if(arrayGastosTotales.count < 1){
             
-            for index in 0...arrayCategorias.count-1{
-                
-                chartEntry.append(PieChartDataEntry(value: 0, label: arrayCategorias[index]))
-            }
+            chartEntry.append(PieChartDataEntry(value: 0, label: "NO HAY DATOS"))
+            
         } else{
             
-            for index in 0...arrayCategorias.count-1{
-                
-                chartEntry.append(PieChartDataEntry(value: Double(arrayGastosTotales[index]), label: arrayCategorias[index]))
+//            for index in 0...arrayCategorias.count-1{
+            for index in 0...arrayCategoriasGastos.count-1{
+            
+            
+                chartEntry.append(PieChartDataEntry(value: Double(arrayGastosTotales[index]), label: arrayCategoriasGastos[index]))
             }
         }
 
@@ -145,11 +146,16 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
 
     func getTotalsByCategory(){
 
-        let query = try! BD.executeQuery("SELECT SUM(Monto) as TotalGastos FROM Gastos GROUP BY(Categoria)", values: [])
+        let query = try! BD.executeQuery("SELECT SUM(Monto) as TotalGastos, Categoria FROM Gastos GROUP BY(Categoria)", values: [])
 
         while query.next(){
             arrayGastosTotales.append(Float(query.int(forColumn: "TotalGastos")))
+            arrayCategoriasGastos.append(query.string(forColumn: "Categoria"))
+            
+            
         }
+        print("Arreglo categorias de tabla gastos:")
+        print(arrayCategoriasGastos)
         
         let query2 = try! BD.executeQuery("SELECT Categoria FROM Catalogo_categoria", values: [])
         
@@ -167,17 +173,15 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
 
         if !BD.open(){
             print("Error al abrir la BD")
-            return
         }
         else{
-            print("si se abrio BD en reporte")
-            return
         }
     }
 
     func clearDataToDisplay(){
         totalExpenses = 0
         arrayCategorias.removeAll()
+        arrayCategoriasGastos.removeAll()
         arrayGastosTotales.removeAll()
     }
 

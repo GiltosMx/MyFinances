@@ -16,6 +16,12 @@
             <PersistentString
                value = "arrayGastosTotales.count">
             </PersistentString>
+            <PersistentString
+               value = "arrayCategoriasGastos[0]">
+            </PersistentString>
+            <PersistentString
+               value = "arrayCategorias.count">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -31,6 +37,14 @@
       </ContextState>
       <ContextState
          contextName = "ViewControllerFormulario.getPresupuesto() -&gt; ():ViewControllerFormulario.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerReporte.getExpenseDetails() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayCategoriasGastos.count-1">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

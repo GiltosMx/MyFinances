@@ -34,10 +34,13 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         super.viewDidLoad()
         self.categoriasPicker.dataSource = self
         self.categoriasPicker.delegate = self
-//        DescripcionTextField.delegate = self
-//        montoTextField.delegate = self
+        DescripcionTextField.delegate = self
+        montoTextField.delegate = self
         
         graficaPastel.delegate = self
+        
+        
+        
         
         
     }
@@ -45,6 +48,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         createOrOpenDB()
         getCategorias()
         getPresupuesto()
+//        queryTest()
         //reloadPresupuesto()
         //createTables()
     }
@@ -156,9 +160,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
             self.montoString = self.montoTextField.text
             self.monto = Float(self.montoString)
             
-            print("descripcion \(self.DescripcionTextField.text)")
-            print("Monto \(self.montoTextField.text)")
-            print("Categoria \(self.categoria)")
+            
             
             if(self.monto == nil || self.monto < 0 || self.DescripcionTextField.text == "" ){
                 print("No es valido")
@@ -177,12 +179,17 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 if(self.categoria != nil){
                     
                     try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoria,fecha,self.DescripcionTextField.text!,self.monto])
-        
+                    print("descripcion \(self.DescripcionTextField.text)")
+                    print("Monto \(self.montoTextField.text)")
+                    print("Categoria \(self.categoria)")
                 } else {
                     //En caso de que el usuario no mueva el picker se
                     //toma la primera categoria del arreglo
                     
                     try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoriasArray[0],fecha,self.DescripcionTextField.text!,self.monto])
+                    print("descripcion \(self.DescripcionTextField.text)")
+                    print("Monto \(self.montoTextField.text)")
+                    print("Categoria \(self.categoria)")
                 }
                 
                 try! self.BD!.executeUpdate("update Usuario set Gasto = Gasto - ?", values: [self.monto])
@@ -245,6 +252,19 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         textField.resignFirstResponder()
         
         return true
+    }
+    
+    
+    func queryTest(){
+        
+        let  query = try! BD.executeQuery("SELECT * FROM Gastos", values: [])
+        
+        while query.next() {
+            print(query.string(forColumn: "Categoria"))
+            print(query.string(forColumn: "Fecha"))
+            print(query.string(forColumn: "Descripcion"))
+            print(query.string(forColumn: "Monto"))
+        }
     }
 
 }
