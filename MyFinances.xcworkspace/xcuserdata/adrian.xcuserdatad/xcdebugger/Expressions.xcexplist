@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ViewControllerReporte.updateBudget() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presupuestoQuery.int(forColumn: &quot;Presupuesto&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewControllerReporte.setupChartData() -&gt; ():ViewControllerReporte.swift">
          <PersistentStrings>
             <PersistentString

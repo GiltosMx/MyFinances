@@ -20,10 +20,10 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
     @IBOutlet weak var lblMontoGasto: UILabel!
     @IBOutlet weak var lblCategoriaGasto: UILabel!
     
-
     var BD: FMDatabase!
     var totalExpenses : Float = 0
     var remainingBudget : Float = 0
+    var budgetPeriod: String = ""
     var arrayGastosTotales: Array<Float> = []
     var arrayCategorias: Array<String> = []
     var arrayCategoriasGastos: Array<String> = []
@@ -39,6 +39,8 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         setupChartData()
 
         setInformationLabels()
+        
+        checkBudgetPeriod()
 
     }
 
@@ -74,7 +76,6 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
             
         } else{
             
-//            for index in 0...arrayCategorias.count-1{
             for index in 0...arrayCategoriasGastos.count-1{
             
             
@@ -161,6 +162,70 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         
         while query2.next() {
             arrayCategorias.append(query2.string(forColumn: "Categoria"))
+        }
+    }
+    
+    
+    func checkBudgetPeriod(){
+        
+        let query = try! BD.executeQuery("SELECT Rango FROM Usuario", values: [])
+        
+        while query.next(){
+            self.budgetPeriod = query.string(forColumn: "Rango")
+        }
+        
+        updateBudget(budgetPeriod: budgetPeriod)
+    }
+    
+    func updateBudget(budgetPeriod: String){
+        
+        var shouldUpdateBudget: Int32 = 0
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        let weekday = calendar.component(.weekday, from: date)
+        
+        let query = try! BD.executeQuery("SELECT shouldUpdateBudget FROM Usuario", values: [])
+        
+        while query.next() {
+            shouldUpdateBudget = query.int(forColumn: "shouldUpdateBudget")
+        }
+        
+        if(shouldUpdateBudget == 1){
+            
+            let presupuestoQuery = try! BD.executeQuery("SELECT Presupuesto FROM Usuario", values: [])
+            
+            if(budgetPeriod == "Mensual"){
+                if(day == 1){
+                    
+                    while presupuestoQuery.next() {
+                        
+                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
+                    }
+                    
+                    try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [0])
+                    
+                } else {
+                    try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+                }
+                
+            } else if(budgetPeriod == "Semanal"){
+                
+                if(weekday == 1){
+                    
+                    while presupuestoQuery.next() {
+                        
+                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
+                    }
+                    
+                    try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [0])
+                    
+                } else {
+                    
+                    try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+                }
+            }
         }
     }
 

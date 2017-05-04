@@ -64,7 +64,10 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
             print("No se creo la tabla1")
         }
         
-        let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, Warning integer)")
+        let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, shouldUpdateBudget integer)")
+        
+        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+        
         if !result2
         {
             print("No se creo la tabla2")
@@ -138,8 +141,8 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         pieChartdataSet = PieChartDataSet(values: charEntry, label: nil)
         var color: [NSUIColor] = []
-        color.append(UIColor(colorLiteralRed: 0.0, green: 0.66, blue: 0.45, alpha: 1.0))
-        color.append(UIColor(colorLiteralRed: 0.25, green: 0.80, blue: 0.53, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.80, green: 0.898, blue: 0.898, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.498, green: 0.749, blue: 0.749, alpha: 1.0))
         pieChartdataSet.setColors(color, alpha: 1)
         
         
