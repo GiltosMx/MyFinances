@@ -36,74 +36,13 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         self.categoriasPicker.delegate = self
         DescripcionTextField.delegate = self
         montoTextField.delegate = self
-        
         graficaPastel.delegate = self
-        
-        
-        
-        
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         createOrOpenDB()
         getCategorias()
         getPresupuesto()
-//        queryTest()
-        //reloadPresupuesto()
-        //createTables()
-    }
-    
-    func reloadPresupuesto(){
-        try! self.BD!.executeUpdate("update Usuario set Gasto = ?", values: [5000])
-    }
-    
-    func createTables(){
-        let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
-        if !result
-        {
-            print("No se creo la tabla1")
-        }
-        
-        let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, shouldUpdateBudget integer)")
-        
-        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
-        
-        if !result2
-        {
-            print("No se creo la tabla2")
-        }
-        let result3 = BD!.executeStatements("CREATE TABLE Gastos(Categoria text, Fecha text, Descripcion text, Monto integer)")
-        if !result3
-        {
-            print("No se creo la tabla3")
-        }
-        let result4 = BD!.executeStatements("CREATE TABLE Presupuesto_detalle(Presupuesto integer, Categoria text)")
-        if !result4
-        {
-            print("No se creo la tabla4")
-        }
-        
-        try! BD!.executeUpdate("insert into Usuario values(?,?,?,?,?,?,?)", values: ["Fulanito","De tal","correoFalso@hotmail.com", 14400.00, 14400.00,"Mensual", 75])
-        
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Transporte"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Entretenimiento"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Educacion"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
-        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
-
-        
-    }
-    
-    func createOrOpenDB(){
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        
-        let dbPath = paths[0] + "/myDB.db"
-        
-        BD = FMDatabase(path: dbPath)
-    
-        if !BD.open(){
-            print("Error al abrir la BD")
-        }
     }
     
     func getCategorias(){
@@ -116,11 +55,10 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 
             }
         }catch{
-            createTables()
-            getCategorias()
+//            createTables()
+//            getCategorias()
         }
         categoriasPicker.reloadAllComponents()
-        
     }
     
     func getPresupuesto(){
@@ -129,10 +67,18 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         let queryPresupuesto = try! BD.executeQuery("SELECT Presupuesto, Gasto FROM Usuario", values: [])
         while queryPresupuesto.next(){
-            presupuestoLabel.text = "$ " + queryPresupuesto.string(forColumn: "Presupuesto")
-            dataChart.append(Float(queryPresupuesto.string(forColumn: "Gasto"))!)
-            saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
-            dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))! - Float(queryPresupuesto.string(forColumn: "Gasto"))!)
+            let presupuesto = Float(queryPresupuesto.string(forColumn: "Presupuesto"))
+            let gasto = Float(queryPresupuesto.string(forColumn: "Gasto"))
+            
+            presupuestoLabel.text = "$ " + String(presupuesto!)
+            dataChart.append(presupuesto! - gasto!)
+            saldoRestanteLabel.text = "$ " + String(presupuesto! - gasto!)
+            dataChart.append(gasto!)
+            
+//            presupuestoLabel.text = "$ " + queryPresupuesto.string(forColumn: "Presupuesto")
+//            dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))!)
+//            saldoRestanteLabel.text = "$ " + queryPresupuesto.string(forColumn: "Gasto")
+//            dataChart.append(Float(queryPresupuesto.string(forColumn: "Presupuesto"))! - Float(queryPresupuesto.string(forColumn: "Gasto"))!)
         }
 
         charEntry.append(PieChartDataEntry(value: Double(dataChart[0]), label: "Disponible"))
@@ -175,35 +121,31 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 print("si es valido")
                 let date = Date()
                 let calendar = Calendar.current
-                let fecha = String(calendar.component(.year, from: date)) + "-" + String(calendar.component(.month, from: date)) + "-" + String(calendar.component(.day, from: date)) + " " + String(calendar.component(.minute, from: date)) + "-" + String(calendar.component(.hour, from: date)) + "-" + String(calendar.component(.second, from: date))
+                let fecha = String(calendar.component(.year, from: date)) + "-" + String(calendar.component(.month, from: date)) + "-" + String(calendar.component(.day, from: date)) + " " + String(calendar.component(.hour, from: date)) + ":" + String(calendar.component(.minute, from: date)) + ":" + String(calendar.component(.second, from: date))
                 
-                print("Fecha \(fecha)")
+//                print("Fecha \(fecha)")
                 
                 if(self.categoria != nil){
                     
                     try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoria,fecha,self.DescripcionTextField.text!,self.monto])
-                    print("descripcion \(self.DescripcionTextField.text)")
-                    print("Monto \(self.montoTextField.text)")
-                    print("Categoria \(self.categoria)")
+//                    print("descripcion \(String(describing: self.DescripcionTextField.text))")
+//                    print("Monto \(String(describing: self.montoTextField.text))")
+//                    print("Categoria \(self.categoria)")
                 } else {
                     //En caso de que el usuario no mueva el picker se
                     //toma la primera categoria del arreglo
                     
                     try! self.BD!.executeUpdate("insert into Gastos values(?,?,?,?)", values: [self.categoriasArray[0],fecha,self.DescripcionTextField.text!,self.monto])
-                    print("descripcion \(self.DescripcionTextField.text)")
-                    print("Monto \(self.montoTextField.text)")
-                    print("Categoria \(self.categoria)")
+//                    print("descripcion \(String(describing: self.DescripcionTextField.text))")
+//                    print("Monto \(String(describing: self.montoTextField.text))")
+//                    print("Categoria \(self.categoria)")
                 }
                 
-                try! self.BD!.executeUpdate("update Usuario set Gasto = Gasto - ?", values: [self.monto])
-                
-                //self.graficaPastel.notifyDataSetChanged()
-                //self.graficaPastel.clear()
+                try! self.BD!.executeUpdate("update Usuario set Gasto = Gasto + ?", values: [self.monto])
                 
                 self.getPresupuesto()
                 
-                
-                let confirm = UIAlertController(title: "Listo", message: "Venta Registrada", preferredStyle: .alert)
+                let confirm = UIAlertController(title: "Listo", message: "Gasto Registrada", preferredStyle: .alert)
                 let listoButton = UIAlertAction(title: "Ok", style: .default){
                     (action: UIAlertAction) in
                     
@@ -257,6 +199,53 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         return true
     }
     
+    func createTables(){
+        let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
+        if !result
+        {
+            print("No se creo la tabla1")
+        }
+        
+        let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, Warning integer, shouldUpdateBudget integer)")
+        
+//        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+        
+        if !result2
+        {
+            print("No se creo la tabla2")
+        }
+        let result3 = BD!.executeStatements("CREATE TABLE Gastos(Categoria text, Fecha text, Descripcion text, Monto integer)")
+        if !result3
+        {
+            print("No se creo la tabla3")
+        }
+        let result4 = BD!.executeStatements("CREATE TABLE Presupuesto_detalle(Presupuesto integer, Categoria text)")
+        if !result4
+        {
+            print("No se creo la tabla4")
+        }
+        
+        try! BD!.executeUpdate("insert into Usuario values(?,?,?,?,?,?,?)", values: ["Fulanito","De tal","correoFalso@hotmail.com", 14400.00, 14400.00,"Mensual", 75, 1])
+        
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Transporte"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Entretenimiento"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Educacion"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
+    }
+
+    
+    func createOrOpenDB(){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        
+        let dbPath = paths[0] + "/myDB.db"
+        
+        BD = FMDatabase(path: dbPath)
+        
+        if !BD.open(){
+            print("Error al abrir la BD")
+        }
+    }
     
     func queryTest(){
         

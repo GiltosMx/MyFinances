@@ -52,10 +52,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
             print("Error al abrir la BD")
             return
         }
-        else{
-            print("si se abrio")
-            return
-        }
     }
     
     func cargarValores(){
@@ -126,7 +122,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
             (action: UIAlertAction) in
             
             do{
-            try self.BD!.executeUpdate("Update Usuario set Nombre = ?", values: [self.nombreTxt.text])
+            try self.BD!.executeUpdate("Update Usuario set Nombre = ?", values: [self.nombreTxt.text ?? ""])
             } catch{
              print("no se inserto el nombre")
             }
@@ -153,7 +149,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
             (action: UIAlertAction) in
             
             do{
-                try self.BD!.executeUpdate("Update Usuario set Apellido = ?", values: [self.apellidoTxt.text])
+                try self.BD!.executeUpdate("Update Usuario set Apellido = ?", values: [self.apellidoTxt.text ?? ""])
             } catch{
                 print("no se inserto el apellido")
             }
@@ -180,7 +176,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
             (action: UIAlertAction) in
             
             do{
-                try self.BD!.executeUpdate("Update Usuario set Correo = ?", values: [self.correoTxt.text])
+                try self.BD!.executeUpdate("Update Usuario set Correo = ?", values: [self.correoTxt.text ?? ""])
             } catch{
                 print("no se inserto el nombre")
             }
@@ -201,13 +197,14 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
     }
     
     @IBAction func cambiarPresupuesto(_ sender: Any) {
-        let alert = UIAlertController(title: "Cambiar Presupuesto", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Cambiar Presupuesto", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
             
             do{
-                try self.BD!.executeUpdate("Update Usuario set Presupuesto = ?", values: [Float(self.presupuestoTxt.text!)])
+                try self.BD!.executeUpdate("Update Usuario set Presupuesto = ?", values: [Float(self.presupuestoTxt.text!) ?? 0])
+                
             } catch{
                 print("no se inserto el nombre")
             }
@@ -225,6 +222,13 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         alert.addAction(cancelButton)
         
         self.present(alert, animated: true, completion: nil)
+        
+        
+        //Comunicarse con Tab de Agregar Gastos para que establecer el nuevo presupuesto
+        
+        
+        
+        
     }
     @IBAction func cambiarRango(_ sender: Any) {
         let alert = UIAlertController(title: "Cambiar Rango", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)

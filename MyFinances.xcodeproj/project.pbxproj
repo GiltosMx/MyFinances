@@ -13,11 +13,12 @@
 		3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */; };
 		3A09A7A71EB69A6F001FB43B /* ViewControllerReporte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */; };
 		3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59765E1E72115400BDFE34 /* AppDelegate.swift */; };
-		3A5976611E72115400BDFE34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976601E72115400BDFE34 /* ViewController.swift */; };
 		3A5976641E72115400BDFE34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976621E72115400BDFE34 /* Main.storyboard */; };
 		3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A5976651E72115400BDFE34 /* MyFinances.xcdatamodeld */; };
 		3A5976691E72115400BDFE34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A5976681E72115400BDFE34 /* Assets.xcassets */; };
 		3A59766C1E72115400BDFE34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A59766A1E72115400BDFE34 /* LaunchScreen.storyboard */; };
+		3A8D49F51EBD3CE4002DD482 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D49F41EBD3CE4002DD482 /* TableViewCell.swift */; };
+		3AF08C581EBEDB1400D37B83 /* ViewControllerGastos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF08C571EBEDB1400D37B83 /* ViewControllerGastos.swift */; };
 		F491079679F7BA0E12504F96 /* Pods_MyFinances.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,12 +32,13 @@
 		3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReporte.swift; sourceTree = "<group>"; };
 		3A59765B1E72115400BDFE34 /* MyFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A59765E1E72115400BDFE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A5976601E72115400BDFE34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A5976631E72115400BDFE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A5976661E72115400BDFE34 /* MyFinances.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFinances.xcdatamodel; sourceTree = "<group>"; };
 		3A5976681E72115400BDFE34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A59766B1E72115400BDFE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A59766D1E72115400BDFE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A8D49F41EBD3CE4002DD482 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3AF08C571EBEDB1400D37B83 /* ViewControllerGastos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerGastos.swift; sourceTree = "<group>"; };
 		741A997EF3F092022220D67E /* Pods-MyFinances.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,17 +76,18 @@
 			isa = PBXGroup;
 			children = (
 				3A59765E1E72115400BDFE34 /* AppDelegate.swift */,
-				3A5976601E72115400BDFE34 /* ViewController.swift */,
 				3A5976621E72115400BDFE34 /* Main.storyboard */,
-				3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */,
-				3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */,
-				3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */,
+				3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */,
 				3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */,
+				3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */,
+				3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */,
+				3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */,
+				3AF08C571EBEDB1400D37B83 /* ViewControllerGastos.swift */,
+				3A8D49F41EBD3CE4002DD482 /* TableViewCell.swift */,
 				3A5976681E72115400BDFE34 /* Assets.xcassets */,
 				3A59766A1E72115400BDFE34 /* LaunchScreen.storyboard */,
 				3A59766D1E72115400BDFE34 /* Info.plist */,
 				3A5976651E72115400BDFE34 /* MyFinances.xcdatamodeld */,
-				3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */,
 			);
 			path = MyFinances;
 			sourceTree = "<group>";
@@ -231,12 +234,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A5976671E72115400BDFE34 /* MyFinances.xcdatamodeld in Sources */,
+				3A8D49F51EBD3CE4002DD482 /* TableViewCell.swift in Sources */,
 				3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */,
 				3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */,
-				3A5976611E72115400BDFE34 /* ViewController.swift in Sources */,
 				3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */,
 				3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */,
 				3A09A7A71EB69A6F001FB43B /* ViewControllerReporte.swift in Sources */,
+				3AF08C581EBEDB1400D37B83 /* ViewControllerGastos.swift in Sources */,
 				3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

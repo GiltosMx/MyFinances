@@ -67,7 +67,7 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
             self.dolaresPesosLabel.text = self.dolaresPesosLabel.text! + String(self.Dolar)
             self.bitCoinsLabes.text = self.bitCoinsLabes.text! + String(self.Pesosbtc)
             self.activityIndicator.stopAnimating()
-            print("\(results)")
+//            print("\(results)")
         }
         
         task.resume()

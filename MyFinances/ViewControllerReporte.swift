@@ -131,17 +131,26 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
     }
 
     func getExpensesGeneralData(){
-        let queryResult = try! BD.executeQuery("SELECT Monto FROM Gastos", values: [])
-
-        let queryResult1 = try! BD.executeQuery("SELECT Gasto FROM Usuario",values: [])
-
-
-        while queryResult.next() {
-            totalExpenses = totalExpenses + Float(queryResult.int(forColumn: "Monto"))
-        }
-
-        while(queryResult1.next()){
-            remainingBudget = Float(queryResult1.int(forColumn: "Gasto"))
+        
+        //Si alguna de las consultas arroja una excepcion
+        //es porque las tablas no han sido creadas.
+        
+        do {
+            let queryResult = try BD.executeQuery("SELECT Monto FROM Gastos", values: [])
+            
+            let queryResult1 = try BD.executeQuery("SELECT Gasto FROM Usuario",values: [])
+            
+            
+            while queryResult.next() {
+                totalExpenses = totalExpenses + Float(queryResult.int(forColumn: "Monto"))
+            }
+            
+            while(queryResult1.next()){
+                remainingBudget = Float(queryResult1.int(forColumn: "Gasto"))
+            }
+        } catch {
+            createTables()
+            getExpensesGeneralData()
         }
     }
 
@@ -152,11 +161,7 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         while query.next(){
             arrayGastosTotales.append(Float(query.int(forColumn: "TotalGastos")))
             arrayCategoriasGastos.append(query.string(forColumn: "Categoria"))
-            
-            
         }
-        print("Arreglo categorias de tabla gastos:")
-        print(arrayCategoriasGastos)
         
         let query2 = try! BD.executeQuery("SELECT Categoria FROM Catalogo_categoria", values: [])
         
@@ -194,15 +199,17 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         
         if(shouldUpdateBudget == 1){
             
-            let presupuestoQuery = try! BD.executeQuery("SELECT Presupuesto FROM Usuario", values: [])
+//            let presupuestoQuery = try! BD.executeQuery("SELECT Presupuesto FROM Usuario", values: [])
             
             if(budgetPeriod == "Mensual"){
                 if(day == 1){
                     
-                    while presupuestoQuery.next() {
-                        
-                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
-                    }
+                    try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [0])
+                    
+//                    while presupuestoQuery.next() {
+//                    
+//                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
+//                    }
                     
                     try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [0])
                     
@@ -214,10 +221,12 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
                 
                 if(weekday == 1){
                     
-                    while presupuestoQuery.next() {
-                        
-                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
-                    }
+                    try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [0])
+                    
+//                    while presupuestoQuery.next() {
+//                        
+//                        try! BD.executeUpdate("UPDATE Usuario SET Gasto = ?", values: [Float(presupuestoQuery.int(forColumn: "Presupuesto"))])
+//                    }
                     
                     try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [0])
                     
@@ -233,6 +242,8 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
 
         let dbPath = paths[0] + "/myDB.db"
+        
+//        print("Path de la BD:\n" + dbPath)
 
         BD = FMDatabase(path: dbPath)
 
@@ -250,4 +261,41 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         arrayGastosTotales.removeAll()
     }
 
+    func createTables(){
+        let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
+        if !result
+        {
+            print("No se creo la tabla1")
+        }
+        
+        let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, Warning integer, shouldUpdateBudget integer)")
+        
+        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+        
+        if !result2
+        {
+            print("No se creo la tabla2")
+        }
+        let result3 = BD!.executeStatements("CREATE TABLE Gastos(Categoria text, Fecha text, Descripcion text, Monto integer)")
+        if !result3
+        {
+            print("No se creo la tabla3")
+        }
+        let result4 = BD!.executeStatements("CREATE TABLE Presupuesto_detalle(Presupuesto integer, Categoria text)")
+        if !result4
+        {
+            print("No se creo la tabla4")
+        }
+        
+        try! BD!.executeUpdate("insert into Usuario values(?,?,?,?,?,?,?,?)", values: ["Fulanito","De tal","correoFalso@hotmail.com", 14400.00, 0,"Mensual", 75, 1])
+        
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Transporte"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Entretenimiento"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Educacion"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
+        try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
+        
+        
+    }
+    
 }

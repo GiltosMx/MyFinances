@@ -3,18 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewControllerReporte.fillChartColorArray() -&gt; [UIColor]:ViewControllerReporte.swift">
+         contextName = "SettingsViewController.cargarValores() -&gt; ():SettingsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "arrayCategorias.count">
+               value = "query.string(forColumn: &quot;Presupuesto&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewControllerReporte.updateBudget() -&gt; ():ViewControllerReporte.swift">
+         contextName = "ViewControllerReporte.fillChartColorArray() -&gt; [UIColor]:ViewControllerReporte.swift">
          <PersistentStrings>
             <PersistentString
-               value = "presupuestoQuery.int(forColumn: &quot;Presupuesto&quot;)">
+               value = "arrayCategorias.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -33,6 +33,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ViewControllerReporte.updateBudget() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presupuestoQuery.int(forColumn: &quot;Presupuesto&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewControllerReporte.setInformationLabels() -&gt; ():ViewControllerReporte.swift">
          <PersistentStrings>
             <PersistentString
@@ -45,6 +53,17 @@
       </ContextState>
       <ContextState
          contextName = "ViewControllerFormulario.getPresupuesto() -&gt; ():ViewControllerFormulario.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "queryPresupuesto.string(forColumn: &quot;Gasto&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "query.string(forColumn: &quot;Categoria&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "queryPresupuesto.string(forColumn: &quot;Presupuesto&quot;)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ViewControllerReporte.getExpenseDetails() -&gt; ():ViewControllerReporte.swift">
