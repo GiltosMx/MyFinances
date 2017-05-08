@@ -13,6 +13,7 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblTotalGastos: UILabel!
     
     //MARK: - Atributos
     var BD: FMDatabase!
@@ -25,12 +26,17 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         BD.open()
         getCantidadGastosPorCategoria()
+        setTotalGastado()
         listadoGastosPorCategoria = getListadoGastosPorCategoria()
         tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         BD.close()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -48,6 +54,14 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     }
     
     //MARK: - Metodos de la Clase
+    
+    func setTotalGastado(){
+        let query = try! BD.executeQuery("SELECT Gasto FROM Usuario", values: [])
+        
+        if(query.next()){
+            lblTotalGastos.text = "$" + String(query.int(forColumn: "Gasto"))
+        }
+    }
     
     func getListadoGastosPorCategoria() -> Array<Array<String>> {
         
@@ -112,7 +126,7 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "financeCell", for: indexPath) as! TableViewCell
         
         var montoGasto: Float = 0
         
@@ -144,6 +158,7 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
             let presupuesto = Float(gastoQuery.int(forColumn: "Presupuesto"))
             
             montoGasto = (montoGasto * 100) / presupuesto
+            cell.setProgress(progress: montoGasto / 100.0)
         }
         
         cell.lblPorcentaje.text = String("\(montoGasto) %")

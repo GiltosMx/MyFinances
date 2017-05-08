@@ -95,7 +95,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         pieChartdataSet = PieChartDataSet(values: charEntry, label: nil)
         var color: [NSUIColor] = []
-        color.append(UIColor(colorLiteralRed: 0.80, green: 0.898, blue: 0.898, alpha: 1.0))
+        color.append(UIColor(colorLiteralRed: 0.38, green: 0.529, blue: 0.576, alpha: 1.0))
         color.append(UIColor(colorLiteralRed: 0.498, green: 0.749, blue: 0.749, alpha: 1.0))
         pieChartdataSet.setColors(color, alpha: 1)
         
