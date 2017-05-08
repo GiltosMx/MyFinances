@@ -10,41 +10,47 @@ import UIKit
 import FMDB
 
 class AddCategoriaViewController: UIViewController, UITextFieldDelegate{
-    
-    var BD: FMDatabase!
 
+    //MARK: - Outlets
     @IBOutlet weak var categoriaTextFiel: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    //MARK: - Atributos
+    var BD: FMDatabase!
     
+    //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         categoriaTextFiel.delegate = self
         // Do any additional setup after loading the view.
         createOrOpenDB()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        createOrOpenDB()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        BD.close()
+    }
+    
+    //MARK: - Metodos de la Clase
     func createOrOpenDB(){
-    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-    
-    let dbPath = paths[0] + "/myDB.db"
-    
-    BD = FMDatabase(path: dbPath)
-    
-    if !BD.open(){
-    print("Error al abrir la BD")
-    return
-    }
-    else{
-    print("si se abrio")
-    return
-    }
-    
-    }
-    
-    @IBAction func agregarGuia(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Insertar Venta", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        
+        let dbPath = paths[0] + "/myDB.db"
+        
+        BD = FMDatabase(path: dbPath)
+        
+        if !BD.open(){
+            print("Error al abrir la BD")
+        }
+    }
+    
+    @IBAction func agregarCategoria(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Agregar Categoría", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -72,6 +78,7 @@ class AddCategoriaViewController: UIViewController, UITextFieldDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - Metodos del TextField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }

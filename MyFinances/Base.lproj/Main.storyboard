@@ -296,7 +296,7 @@
                                             <color key="titleColor" red="0.69803921570000005" green="0.61176470589999998" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="agregarGuia:" destination="t4e-ZB-fDB" eventType="touchUpInside" id="BmO-Ri-ZzF"/>
+                                            <action selector="agregarCategoria:" destination="t4e-ZB-fDB" eventType="touchUpInside" id="w9C-uh-7qs"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -854,8 +854,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categoría" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pi-St-O5F">
-                                                    <rect key="frame" x="8" y="8" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categoría" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pi-St-O5F" userLabel="LblDescripcion">
+                                                    <rect key="frame" x="8" y="8" width="297" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -878,10 +878,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblCategoria" destination="4pi-St-O5F" id="Ztf-37-0qX"/>
+                                            <outlet property="lblDescripcion" destination="4pi-St-O5F" id="94X-bO-e0o"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="gaC-KV-eYt" id="k7I-Q0-p6T"/>
                                     <outlet property="delegate" destination="gaC-KV-eYt" id="jft-Wl-i9s"/>
@@ -897,6 +898,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Gastos" image="noun_935895_cc" id="cxv-tg-xZf"/>
+                    <connections>
+                        <outlet property="tableView" destination="RRF-lf-aoT" id="uTT-4A-iqj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6u-5p-J2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1039,12 +1043,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Reporte" image="noun_619293_cc" id="T8S-wE-fwp"/>
                     <connections>
-                        <outlet property="PieChart" destination="zTC-rU-rLs" id="yBg-am-Ou1"/>
                         <outlet property="lblCantidadGastos" destination="h7S-64-lue" id="JU9-DJ-wVj"/>
                         <outlet property="lblCategoriaGasto" destination="zlb-Zt-9G7" id="FYp-Wg-0I4"/>
                         <outlet property="lblDescripcionGasto" destination="iVH-D6-Chj" id="EJc-ZB-C14"/>
                         <outlet property="lblFechaGasto" destination="pHI-jc-nVG" id="khd-dE-cDv"/>
                         <outlet property="lblMontoGasto" destination="3cN-h4-gif" id="HOq-Av-wbl"/>
+                        <outlet property="pieChart" destination="zTC-rU-rLs" id="KsE-JD-aJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6F3-yz-e7N" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,24 +9,20 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
-    @IBOutlet weak var lblCategoria: UILabel!
+    
+    //MARK: - Outlets
+    @IBOutlet weak var lblDescripcion: UILabel!
     
     
-    
+    //MARK: - Metodos de TableCell
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
-    
-    
-    
-    
 
 }

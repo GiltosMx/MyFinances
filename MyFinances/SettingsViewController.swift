@@ -11,6 +11,7 @@ import FMDB
 
 class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    //MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nombreLabel: UILabel!
     @IBOutlet weak var nombreTxt: UITextField!
@@ -23,10 +24,12 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
     @IBOutlet weak var rangoLabel: UILabel!
     @IBOutlet weak var rangoPicker: UIPickerView!
     
+    //MARK: - Atributos
     var BD: FMDatabase!
     var rangoArray: Array<String> = []
     var rangoString: String = ""
     
+    //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         nombreTxt.delegate = self
@@ -41,6 +44,15 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         rangoArray.append("Semanal")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        cargarBaseDatos()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        BD.close()
+    }
+    
+    //MARK: - Metodos de la Clase
     func cargarBaseDatos(){
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         
@@ -115,8 +127,9 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         
     }
 
+    //MARK: - Actions
     @IBAction func cambiarNombre(_ sender: Any) {
-        let alert = UIAlertController(title: "Cambiar Usuario", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Cambiar Usuario", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -143,7 +156,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
     }
     
     @IBAction func cambiarApellio(_ sender: Any) {
-        let alert = UIAlertController(title: "Cambiar Apellido", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Cambiar Apellido", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -170,7 +183,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
     }
     
     @IBAction func cambiarCorreo(_ sender: Any) {
-        let alert = UIAlertController(title: "Cambiar Correo", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Cambiar Correo", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -230,8 +243,9 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         
         
     }
+    
     @IBAction func cambiarRango(_ sender: Any) {
-        let alert = UIAlertController(title: "Cambiar Rango", message: "¿Estas seguro?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Cambiar Rango", message: "¿Estás seguro?", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default) {
             (action: UIAlertAction) in
@@ -257,6 +271,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         self.present(alert, animated: true, completion: nil)
     }
  
+    //MARK: - Metodos del TextField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         
@@ -276,7 +291,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         return true
     }
     
-    //Metodos raros del uipickerview
+    //MARK: - Metodos del PickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return rangoArray[row]
     }
@@ -293,7 +308,5 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         return 1
         
     }
-    
-    
 
 }

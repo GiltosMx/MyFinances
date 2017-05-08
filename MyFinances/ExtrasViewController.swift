@@ -9,10 +9,8 @@
 import UIKit
 
 class ExtrasViewController: UIViewController,UITextFieldDelegate {
-    var Dolar: Float = 0.0
-    var Pesosbtc: Float = 0.0
-    var Dolarbtc: Float = 0.0
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usdOutputxt: UITextField!
     @IBOutlet weak var mxmOutputxt: UITextField!
@@ -22,7 +20,12 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var bitCoinsLabes: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: - Atributos
+    var Dolar: Float = 0.0
+    var Pesosbtc: Float = 0.0
+    var Dolarbtc: Float = 0.0
     
+    //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         usdOutputxt.delegate = self
@@ -71,10 +74,10 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
         }
         
         task.resume()
-        
-        
-        
     }
+    
+    
+    //MARK: - Metodos de la Clase
     @IBAction func usdToMxmAction(_ sender: Any) {
         
         let d = Float(usdTextFiel.text!)
@@ -96,7 +99,7 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    
+    //MARK: - Metodos del TextField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
         

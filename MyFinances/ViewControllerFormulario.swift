@@ -12,6 +12,7 @@ import Charts
 
 class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ChartViewDelegate{
     
+    //MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var DescripcionTextField: UITextField!
     @IBOutlet weak var montoTextField: UITextField!
@@ -20,6 +21,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var saldoRestanteLabel: UILabel!
     @IBOutlet weak var graficaPastel: PieChartView!
     
+    //MARK: - Atributos
     var BD: FMDatabase!
     var categoriasArray: Array<String> = []
     var dataChart: Array<Float> = []
@@ -30,6 +32,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     var pieChartdataSet: PieChartDataSet!
     var pieChartData: PieChartData!
     
+    //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.categoriasPicker.dataSource = self
@@ -45,6 +48,11 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         getPresupuesto()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        BD.close()
+    }
+    
+    //MARK: - Metodos de la Clase
     func getCategorias(){
         categoriasArray.removeAll()
         do{
@@ -145,7 +153,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
                 
                 self.getPresupuesto()
                 
-                let confirm = UIAlertController(title: "Listo", message: "Gasto Registrada", preferredStyle: .alert)
+                let confirm = UIAlertController(title: "Listo!", message: "Gasto Registrado", preferredStyle: .alert)
                 let listoButton = UIAlertAction(title: "Ok", style: .default){
                     (action: UIAlertAction) in
                     
@@ -170,7 +178,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     
-    //Metodos raros del uipickerview
+    //MARK: - Metodos del PickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categoriasArray[row]
     }

@@ -3,10 +3,32 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SettingsViewController.cargarValores() -&gt; ():SettingsViewController.swift">
+         contextName = "ViewControllerFormulario.getPresupuesto() -&gt; ():ViewControllerFormulario.swift">
          <PersistentStrings>
             <PersistentString
-               value = "query.string(forColumn: &quot;Presupuesto&quot;)">
+               value = "queryPresupuesto.string(forColumn: &quot;Gasto&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "queryPresupuesto.string(forColumn: &quot;Presupuesto&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "query.string(forColumn: &quot;Categoria&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerReporte.getExpenseDetails() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayCategoriasGastos.count-1">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerReporte.updateBudget() -&gt; ():ViewControllerReporte.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presupuestoQuery.int(forColumn: &quot;Presupuesto&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -15,6 +37,33 @@
          <PersistentStrings>
             <PersistentString
                value = "arrayCategorias.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerGastos.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:ViewControllerGastos.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayCategorias[section]">
+            </PersistentString>
+            <PersistentString
+               value = "gastosPorCategoriaQuery.int(forColumn: &quot;CountGastos&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerGastos.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:ViewControllerGastos.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.lblCategoria">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerGastos.tableView(UITableView, titleForHeaderInSection : Int) -&gt; String?:ViewControllerGastos.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayCategorias">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -33,10 +82,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewControllerReporte.updateBudget() -&gt; ():ViewControllerReporte.swift">
+         contextName = "ViewControllerGastos.viewDidLoad() -&gt; ():ViewControllerGastos.swift">
          <PersistentStrings>
             <PersistentString
-               value = "presupuestoQuery.int(forColumn: &quot;Presupuesto&quot;)">
+               value = "arrayCategorias[5]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewControllerGastos.numberOfSections(in : UITableView) -&gt; Int:ViewControllerGastos.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayCategorias.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -52,24 +109,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewControllerFormulario.getPresupuesto() -&gt; ():ViewControllerFormulario.swift">
+         contextName = "SettingsViewController.cargarValores() -&gt; ():SettingsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "queryPresupuesto.string(forColumn: &quot;Gasto&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "query.string(forColumn: &quot;Categoria&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "queryPresupuesto.string(forColumn: &quot;Presupuesto&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewControllerReporte.getExpenseDetails() -&gt; ():ViewControllerReporte.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "arrayCategoriasGastos.count-1">
+               value = "query.string(forColumn: &quot;Presupuesto&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
