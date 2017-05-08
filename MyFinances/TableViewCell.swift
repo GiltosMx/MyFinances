@@ -12,7 +12,9 @@ class TableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     @IBOutlet weak var lblDescripcion: UILabel!
-    
+    @IBOutlet weak var lblMonto: UILabel!
+    @IBOutlet weak var lblFecha: UILabel!
+    @IBOutlet weak var lblPorcentaje: UILabel!
     
     //MARK: - Metodos de TableCell
     override func awakeFromNib() {

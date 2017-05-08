@@ -180,7 +180,6 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         
         
     }
-    
     func setInformationLabels(){
         
         lblCantidadGastos.text = "$" + String(totalExpenses)

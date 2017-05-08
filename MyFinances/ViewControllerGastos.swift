@@ -18,7 +18,7 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     var BD: FMDatabase!
     var arrayCategorias: Array<String> = []
     var cantidadGastosPorCategoria: Array<Int32> = []
-    var listadoGastosPorCategoria: Array<FMResultSet> = []
+    var listadoGastosPorCategoria: Array<Array<String>> = []
     
     
     //MARK: - Metodos del ViewController
@@ -49,13 +49,31 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
     
     //MARK: - Metodos de la Clase
     
-    func getListadoGastosPorCategoria() -> Array<FMResultSet> {
+    func getListadoGastosPorCategoria() -> Array<Array<String>> {
         
-        var listadoGastos: Array<FMResultSet> = []
+        var listadoGastos: Array<Array<String>> = Array(repeating: Array.init(repeating: "", count: 3), count: arrayCategorias.count)
+        
         
         for index in 0...arrayCategorias.count-1 {
             
-            listadoGastos.append(try! BD.executeQuery("SELECT * FROM Gastos WHERE Categoria = ?", values: [arrayCategorias[index]]))
+            let query = try! BD.executeQuery("SELECT * FROM Gastos WHERE Categoria = ?", values: [arrayCategorias[index]])
+            
+            var string = ""
+            
+            var i = 0
+            
+            while(query.next()){
+                string = ""
+                
+                string = string + query.string(forColumn: "Fecha") + ","
+                string = string + query.string(forColumn: "Descripcion") + ","
+                string = string + query.string(forColumn: "Monto") + ","
+                
+                listadoGastos[index][i] = string
+                
+                i = i+1
+            }
+            
         }
         
         return listadoGastos
@@ -96,13 +114,39 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableViewCell
         
+        var montoGasto: Float = 0
         
-        let listadoActual = listadoGastosPorCategoria[indexPath.section]
+        let cellDataString = listadoGastosPorCategoria[indexPath.section][indexPath.row]
         
-        if (listadoActual.next()){
+        let cellDataArray = cellDataString.characters.split(separator: ",")
+        
+        montoGasto = Float(String(cellDataArray[2]))!
+        
+        cell.lblFecha.text = String(cellDataArray[0])
+        cell.lblDescripcion.text = String(cellDataArray[1])
+        cell.lblMonto.text = String(cellDataArray[2])
+        
+        
+//        let listadoActual = listadoGastosPorCategoria[indexPath.section]
+//        
+//        if (listadoActual.next()){
+//            
+//            cell.lblDescripcion.text = listadoActual.string(forColumn: "Descripcion")
+//            cell.lblMonto.text = "$" + listadoActual.string(forColumn: "Monto")
+//            montoGasto = Float(listadoActual.int(forColumn: "Monto"))
+//            cell.lblFecha.text = listadoActual.string(forColumn: "Fecha")
+//        }
+        
+        let gastoQuery = try! BD.executeQuery("SELECT Presupuesto FROM Usuario", values: [])
+        
+        if(gastoQuery.next()){
             
-            cell.lblDescripcion.text = listadoActual.string(forColumn: "Descripcion")
+            let presupuesto = Float(gastoQuery.int(forColumn: "Presupuesto"))
+            
+            montoGasto = (montoGasto * 100) / presupuesto
         }
+        
+        cell.lblPorcentaje.text = String("\(montoGasto) %")
         
         return cell
     }
