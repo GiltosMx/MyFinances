@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */; };
-		3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */; };
+		3A09A79B1EB5B90C001FB43B /* ModificarCategoriasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A79A1EB5B90C001FB43B /* ModificarCategoriasViewController.swift */; };
 		3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */; };
 		3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */; };
 		3A09A7A71EB69A6F001FB43B /* ViewControllerReporte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */; };
@@ -26,7 +26,7 @@
 		00E9569FC75E926F175A3561 /* Pods_MyFinances.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFinances.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		366EE1A4034711E14322D964 /* Pods-MyFinances.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinances.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFinances/Pods-MyFinances.release.xcconfig"; sourceTree = "<group>"; };
 		3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFormulario.swift; sourceTree = "<group>"; };
-		3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoriaViewController.swift; sourceTree = "<group>"; };
+		3A09A79A1EB5B90C001FB43B /* ModificarCategoriasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModificarCategoriasViewController.swift; sourceTree = "<group>"; };
 		3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
 		3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3A09A7A61EB69A6F001FB43B /* ViewControllerReporte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReporte.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 				3A09A7961EB529C3001FB43B /* ViewControllerFormulario.swift */,
 				3A09A79C1EB5CBE1001FB43B /* ExtrasViewController.swift */,
 				3A09A7A41EB678EE001FB43B /* SettingsViewController.swift */,
-				3A09A79A1EB5B90C001FB43B /* AddCategoriaViewController.swift */,
+				3A09A79A1EB5B90C001FB43B /* ModificarCategoriasViewController.swift */,
 				3AF08C571EBEDB1400D37B83 /* ViewControllerGastos.swift */,
 				3A8D49F41EBD3CE4002DD482 /* TableViewCell.swift */,
 				3A5976681E72115400BDFE34 /* Assets.xcassets */,
@@ -238,7 +238,7 @@
 				3A09A79D1EB5CBE1001FB43B /* ExtrasViewController.swift in Sources */,
 				3A09A7A51EB678EE001FB43B /* SettingsViewController.swift in Sources */,
 				3A09A7971EB529C3001FB43B /* ViewControllerFormulario.swift in Sources */,
-				3A09A79B1EB5B90C001FB43B /* AddCategoriaViewController.swift in Sources */,
+				3A09A79B1EB5B90C001FB43B /* ModificarCategoriasViewController.swift in Sources */,
 				3A09A7A71EB69A6F001FB43B /* ViewControllerReporte.swift in Sources */,
 				3AF08C581EBEDB1400D37B83 /* ViewControllerGastos.swift in Sources */,
 				3A59765F1E72115400BDFE34 /* AppDelegate.swift in Sources */,

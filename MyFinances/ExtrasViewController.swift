@@ -19,6 +19,7 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var dolaresPesosLabel: UILabel!
     @IBOutlet weak var bitCoinsLabes: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var convertidorView: UIView!
     
     //MARK: - Atributos
     var Dolar: Float = 0.0
@@ -38,6 +39,8 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         activityIndicator.startAnimating()
+        
+        convertidorView.layer.cornerRadius = 5
         
         let url = URL(string: "http://bitapeso.com/json/")!
         

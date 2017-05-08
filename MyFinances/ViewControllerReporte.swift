@@ -233,16 +233,17 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         pieChart.sizeToFit()
         pieChart.data = chartData
         pieChart.holeColor = UIColor.clear
+        pieChart.chartDescription?.text = ""
     }
 
     func fillChartColorArray() -> [NSUIColor]{
 
         var arrayColores: [NSUIColor] = []
 
-        var redValue:CGFloat = 0.0
-        var greenValue:CGFloat = 0.125
-        var blueValue:CGFloat = 0.50
-
+        var redValue:CGFloat = 0.25
+        var greenValue:CGFloat = 0.52
+        var blueValue:CGFloat = 0.28
+        
         for _ in 0...arrayCategorias.count{
 
             arrayColores.append(UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0))

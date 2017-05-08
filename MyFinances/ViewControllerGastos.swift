@@ -138,7 +138,7 @@ class ViewControllerGastos: UIViewController, UITableViewDataSource {
         
         cell.lblFecha.text = String(cellDataArray[0])
         cell.lblDescripcion.text = String(cellDataArray[1])
-        cell.lblMonto.text = String(cellDataArray[2])
+        cell.lblMonto.text = "$" + String(cellDataArray[2])
         
         
 //        let listadoActual = listadoGastosPorCategoria[indexPath.section]

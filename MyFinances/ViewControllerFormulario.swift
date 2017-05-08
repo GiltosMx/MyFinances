@@ -13,13 +13,14 @@ import Charts
 class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ChartViewDelegate{
     
     //MARK: - Outlets
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var DescripcionTextField: UITextField!
     @IBOutlet weak var montoTextField: UITextField!
     @IBOutlet weak var categoriasPicker: UIPickerView!
     @IBOutlet weak var presupuestoLabel: UILabel!
     @IBOutlet weak var saldoRestanteLabel: UILabel!
     @IBOutlet weak var graficaPastel: PieChartView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var chartContainerView: UIView!
     
     //MARK: - Atributos
     var BD: FMDatabase!
@@ -35,6 +36,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        setViewsCornerRadius()
         self.categoriasPicker.dataSource = self
         self.categoriasPicker.delegate = self
         DescripcionTextField.delegate = self
@@ -53,6 +55,13 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //MARK: - Metodos de la Clase
+    
+    func setViewsCornerRadius(){
+        self.contentView.layer.cornerRadius = 5
+        self.chartContainerView.layer.cornerRadius = 5
+        self.graficaPastel.layer.cornerRadius = 5
+    }
+    
     func getCategorias(){
         categoriasArray.removeAll()
         do{
@@ -106,6 +115,8 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         graficaPastel.sizeToFit()
         graficaPastel.data = pieChartData
         graficaPastel.holeColor = UIColor.clear
+        graficaPastel.chartDescription?.text = ""
+        
     }
     
     @IBAction func insertarGastoEnBD(_ sender: Any) {
@@ -177,36 +188,6 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
-    
-    //MARK: - Metodos del PickerView
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categoriasArray[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoriasArray.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoria = categoriasArray[row]
-    }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
-        return 1
-        
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
     func createTables(){
         let result = BD!.executeStatements("CREATE TABLE Catalogo_categoria(Categoria text primary key, Icono text, Color text)")
         if !result
@@ -216,7 +197,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         
         let result2 = BD!.executeStatements("CREATE TABLE Usuario(Nombre text, Apellido text, Correo text, Presupuesto integer, Gasto integer, Rango text, Warning integer, shouldUpdateBudget integer)")
         
-//        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
+        //        try! BD.executeUpdate("UPDATE Usuario SET shouldUpdateBudget = ?", values: [1])
         
         if !result2
         {
@@ -241,7 +222,7 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Hogar"])
         try! BD!.executeUpdate("insert into Catalogo_categoria(Categoria) values(?)", values: ["Otros"])
     }
-
+    
     
     func createOrOpenDB(){
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -267,4 +248,36 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
 
+    
+    //MARK: - Metodos del PickerView
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoriasArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoriasArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoria = categoriasArray[row]
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+        
+    }
+    
+    //MARK: - Metodos del TextField
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    
 }
