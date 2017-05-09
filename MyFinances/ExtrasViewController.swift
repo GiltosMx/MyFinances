@@ -11,7 +11,6 @@ import UIKit
 class ExtrasViewController: UIViewController,UITextFieldDelegate {
     
     //MARK: - Outlets
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usdOutputxt: UITextField!
     @IBOutlet weak var mxmOutputxt: UITextField!
     @IBOutlet weak var mxmTextField: UITextField!
@@ -29,9 +28,10 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
     //MARK: - Metodos del ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usdOutputxt.delegate = self
         mxmOutputxt.delegate = self
-        mxmTextField.delegate = self
+        mxmTextField.delegate = self    
         usdTextFiel.delegate = self
         
         
@@ -82,6 +82,13 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     //MARK: - Metodos de la Clase
     @IBAction func usdToMxmAction(_ sender: Any) {
         
