@@ -79,7 +79,9 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
         task.resume()
     }
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     //MARK: - Metodos de la Clase
     @IBAction func usdToMxmAction(_ sender: Any) {
         
@@ -101,22 +103,4 @@ class ExtrasViewController: UIViewController,UITextFieldDelegate {
             print("Datos aun no listos")
         }
     }
-    
-    //MARK: - Metodos del TextField
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: 100),
-                                         animated: true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
-
 }

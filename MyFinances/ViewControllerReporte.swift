@@ -50,6 +50,10 @@ class ViewControllerReporte: UIViewController, ChartViewDelegate {
         BD.close()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: - Metodos de la Clase
     func checkBudgetPeriod(){
         

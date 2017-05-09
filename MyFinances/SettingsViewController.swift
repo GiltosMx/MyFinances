@@ -52,6 +52,10 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UIPickerView
         BD.close()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: - Metodos de la Clase
     func cargarBaseDatos(){
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)

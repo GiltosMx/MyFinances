@@ -40,6 +40,10 @@ class ModificarCategoriasViewController: UIViewController, UITextFieldDelegate, 
         BD.close()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: - Metodos de la Clase
     func createOrOpenDB(){
         

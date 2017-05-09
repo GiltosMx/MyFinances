@@ -54,6 +54,10 @@ class ViewControllerFormulario: UIViewController, UIPickerViewDataSource, UIPick
         BD.close()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: - Metodos de la Clase
     
     func setViewsCornerRadius(){
